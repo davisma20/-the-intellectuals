@@ -1,0 +1,13 @@
+Requires and ENV File
+
+.env
+
+
+that has the following credentials
+GOOGLE_ID=
+GOOGLE_SECRET=
+NEXTAUTH_URL=
+REACT_APP_TMDB_API_KEY=
+REACT_APP_YouTubeSearch=
+REACT_APP_GoogleApiKey=
+

@@ -1,9 +1,86 @@
+    // const onInputChange = (e) => {
+    //     setState({ term: e.target.value });
+    // }
+        // const videoStateUpdater = (event) => {
+    //   setState((prevState) => {
+    //     return {...prevState, videos: event.target.value };
+    //   });
+    //   //safest way to set state when adding previous state
+    // };
+    
+    // {filtererExpenses.length === 0 ? (
+    //     <p>No expenses found</p>
+    //     ) : (
+    //         filtererExpenses.map((expense) => (
+    //             <ExpenseItem
+    //                 key={expense.id}
+    //                 title={expense.title}
+    //                 amount={expense.amount}
+    //                 date={expense.date}
+    //             />
+    //         ))
+    //     )}
+    //conditional content injection   
+    //onChange gives you access to the e which stands for events
+            //pass e to the setState command and use its parameters
+            //Documentation covered under Controller inputs
+            // onChange={onInputChange}
+            ///>
+    
+    // const videoStateUpdater = (event) => {
+    //   setState((prevState) => {
+    //     return {...prevState, videos: event.target.value };
+    //   });
+    //   //safest way to set state
+    // };
+    
+    // onChange={(e) => setState({search: e.target.value})}
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
+  //   try {
+  //     await axios.get('http://localhost:8080/user/fetch', { headers: authObject });
+  //     // await axios.get('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]', { headers: authObject });
+
+  //     localStorage.setItem('username', username);
+  //     localStorage.setItem('password', password);
+  //     window.location.reload();
+  //     setError('');
+  //   } catch (err) {
+  //     setError('Oops, incorrect credentials.');
+  //   }
+  // };
+  
+  // const projectID = '1b7801d6-8a66-4be4-a442-89219d833dfc';
+
+//RFCE
+
+
+import React from 'react';
+
+const Row = () => {
+    return (
+        <div>
+        
+        </div>
+    )
+};
+
+export default Row
+
+
+
 /* CHAT STYLES */
+
 * {
+  margin: 0;
   font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   letter-spacing: 0.5px;
+
 }
 
 .ce-chat-list {
@@ -239,7 +316,22 @@
   outline: none;
   margin-bottom: 25px;
 }
-
+.searchBarInput {
+  color: #333;
+  font-size: 1.2rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 500px;
+  height: 6px;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+  outline: none;
+  margin-bottom: 990px;
+}
 .form {
   width: 400px;
 }

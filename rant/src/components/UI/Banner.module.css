@@ -1,0 +1,9 @@
+.container_banner{
+  background-color: #f1f1f1;
+  text-align: center;
+  border-style: hidden;
+  border-radius: 15px;
+  font-family: 'Ruda', sans-serif;
+  margin: 33px;
+  height:247px;
+}

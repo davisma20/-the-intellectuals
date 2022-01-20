@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import classes from './About.module.css';
 
 
 class About extends Component {
@@ -15,7 +16,7 @@ class About extends Component {
     }
     render() {
         return (
-            <section id="container-about" className="container-about">
+            <section id="container-about" className={classes.container_about}>
                     <h1>About Me</h1> 
                 {/* <form onSubmit={this.mySubmitHandler}>
                 <p>Edit Profile</p>

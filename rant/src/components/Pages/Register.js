@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { ChatEngine } from "react-chat-engine";
-import '../task.min.css'
-class Message extends React.Component {
+import '../../task.min.css'
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tasks: [] };
-    this.messageContent = React.createRef();
+    this.userName = React.createRef();
+    this.password = React.createRef();
   }
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class Message extends React.Component {
     //UNCOMMENT the appropriate url for the backend framework
 
     // Java Spring Boot uses port 8080
-    let url = "http://localhost:8080/message/fetch";
+    let url = "http://localhost:8080/user/fetch";
 
     // C# dotnetcore uses port 5000
     //let url = "http://localhost:5000/projects";
@@ -28,38 +28,39 @@ class Message extends React.Component {
     axios.get(url).then(response => this.setState({ tasks: response.data }));
   };
 
-  sendMessage = () => {
+  addUser = () => {
     //uncomment and update url to appropriate url for backend connection
     //let url = "http://localhost:3001/tasks";
-    let url = "http://localhost:8080/message/post";
+    let url = "http://localhost:8080/user/signup";
     axios.post(url, { 
-                        id: 456, ///WTF Change to Auto Generate
-                        message: this.messageContent.current.value,
-                        content: this.messageContent.current.value 
+                        id: 456, ///WTF
+                        username: this.userName.current.value,
+                        password: this.password.current.value 
       }).then(response => {
       // refresh the data
       this.getData();
       // empty the input
-      this.messageContent.current.value = "";
+      this.userName.current.value = "";
+      this.password.current.value = "";
     });
   };
 
   //create update and delete functions to complete CRUD
 
+
   render() {
     return (
       <div>
-        {/* for some reason this chat engine double renders */}
-          <ChatEngine
-            height="100vh"
-            projectID="098f0f3f-039d-433e-8e78-7a6f4ae2b73d"
-            userName={localStorage.username}
-            // Change the username to EE 
-            // Change the username to CB 
-            userSecret={localStorage.password} />
+        <h3>Register</h3>
+        <label>Username<input ref={this.userName} />
+        </label>
+        <label>Password<input type="password" ref={this.password} />
+        </label>
+        <button type="button" className="btn btn-primary" onClick={this.addUser}>Sign Up</button>
       </div>
+      
     );
   }
 }
 
-export default Message;
+export default Register;
