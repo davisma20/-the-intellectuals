@@ -7,11 +7,14 @@ import Row from '../UI/Row';
 import requests from '../library/requests';
 import VideoBanner from '../UI/VideoBanner';
 import classes from './Video.module.css';
+// import { useStateValue } from "./StateProvider";
 
 
 const API_KEY = process.env.REACT_APP_YouTubeSearch;
  
 const Video = (props) => {
+    // const [{ playlists }, dispatch] = useStateValue();
+
     const [state, setState] = useState({videos: [] });
     const [isLargeRow] = useState(true);
 
@@ -36,7 +39,7 @@ const Video = (props) => {
             <Row 
                 title="RANT ORIGINALS"
                 fetchUrl={ requests.fetchNetflixOriginals }
-                isLargeRow
+                isLargeRow={ true }
                 />
             <Row title="Trending Now " fetchUrl={ requests.fetchTrending }/>
             <Row title="Action Movies " fetchUrl={ requests.fetchActionMovies }/>
