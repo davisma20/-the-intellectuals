@@ -1,19 +1,12 @@
-import React from "react";
+import React, {useState, useRef} from "react";
 import axios from "axios";
 import '../../task.min.css'
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { tasks: [] };
-    this.userName = React.createRef();
-    this.password = React.createRef();
-  }
+const Register = () => {
+  const [state] = useState({ tasks: [] });
+  const userName = useRef();
+  const password = useRef();
 
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData = () => {
+  const getData = () => {
 
     //UNCOMMENT the appropriate url for the backend framework
 
@@ -27,40 +20,44 @@ class Register extends React.Component {
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ tasks: response.data }));
   };
+  const componentDidMount = () => {
+    getData();
+  }
 
-  addUser = () => {
+
+
+  const addUser = () => {
     //uncomment and update url to appropriate url for backend connection
     //let url = "http://localhost:3001/tasks";
     let url = "http://localhost:8080/user/signup";
     axios.post(url, { 
                         id: 456, ///WTF
-                        username: this.userName.current.value,
-                        password: this.password.current.value 
+                        username: userName.current.value,
+                        password: password.current.value 
       }).then(response => {
       // refresh the data
-      this.getData();
+      getData();
       // empty the input
-      this.userName.current.value = "";
-      this.password.current.value = "";
+      userName.current.value = "";
+      password.current.value = "";
     });
   };
 
   //create update and delete functions to complete CRUD
 
 
-  render() {
     return (
       <div>
         <h3>Register</h3>
-        <label>Username<input ref={this.userName} />
+        <label>Username<input ref={userName} />
         </label>
-        <label>Password<input type="password" ref={this.password} />
+        <label>Password<input type="password" ref={password} />
         </label>
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>Sign Up</button>
+        <button type="button" className="btn btn-primary" onClick={addUser}>Sign Up</button>
       </div>
       
     );
-  }
+
 }
 
 export default Register;

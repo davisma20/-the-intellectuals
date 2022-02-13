@@ -4,19 +4,21 @@ import Video from "../../components/Videos/Video";
 import Register from "../../components/Pages/Register";
 import Login from "../../components/Pages/Login";
 import Home from "../../components/Pages/Home";
+import classes from "./TopNav.module.css";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
 const TopNav = (props) => {
     return(
       <Router>
-        <div>
+        <div className={classes.TopNav}>
           <nav className="navbar navbar-expand-lg navbar-light bg-light" >
             <Link className="navbar-brand" to='/Home'>Home</Link>
             <Link className="navbar-brand" to= '/Video'>Video</Link>
             <Link className="navbar-brand" to='/Message'>Messages</Link>
-            <Link className="navbar-brand" to= '/'>Login</Link>
             <Link className="navbar-brand" to= '/Register'>Register</Link>
+            <Link className="navbar-brand" to= '/'>LogOut</Link>
+
           </nav>
           <Switch>
             <Route path='/Home' exact={true} component={Home} />

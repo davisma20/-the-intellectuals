@@ -7,15 +7,12 @@ import Row from '../UI/Row';
 import requests from '../library/requests';
 import VideoBanner from '../UI/VideoBanner';
 import classes from './Video.module.css';
-// import { useStateValue } from "./StateProvider";
-
+import { useStateValue } from "../../StateProvider";
 
 const API_KEY = process.env.REACT_APP_YouTubeSearch;
- 
 const Video = (props) => {
-    // const [{ playlists }, dispatch] = useStateValue();
-
-    const [state, setState] = useState({videos: [] });
+    const [{videos}, dispatch] = useStateValue();
+    // const [state, setState] = useState({videos: [] });
     const [isLargeRow] = useState(true);
 
     useEffect(() => {
@@ -25,11 +22,15 @@ const Video = (props) => {
                 term: term
             };
             YTSearch(YTSearchInfo, (data) => {
-                setState(state.videos = data)
+              dispatch({
+                type: "SET_VIDEOS",
+                videos: data,
+              });
           });
         }
-            videoSearch('Training');
-        }, [state.videos]);
+        videoSearch('Training');
+
+        }, [dispatch]);
         
     return (
       <div className={classes.Video_wrapper} >

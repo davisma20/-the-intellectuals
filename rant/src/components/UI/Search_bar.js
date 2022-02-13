@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SearchBar (props){
+const SearchBar = (props) => {
     const [state, setState] = useState('');
     
     const searchChangeHandler = (e) => {
@@ -11,7 +11,7 @@ function SearchBar (props){
             <input
             className = "searchBarInput "
             placeholder="Search Rant Videos"
-            value={console.log(state.search)}
+            value={state.search}
             onChange={searchChangeHandler}
             />
         </div>

@@ -1,7 +1,10 @@
 import React, { useState, useRef } from 'react';
 import classes from './AuthForm.module.css';
+import { useStateValue } from "../../StateProvider";
 
 const AuthForm = (props) => {
+    const [{loading, loggingIn}, dispatch] = useStateValue();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     
@@ -11,12 +14,11 @@ const AuthForm = (props) => {
     
     const passwordInputRef = useRef();
     
-    const [isLogin, setIsLogin] = useState(true); //is the user logging in?
-    
-    const [isLoading, setIsLoading] = useState(false);    
-
     const switchAuthModeHandler = () => {
-        setIsLogin((prevState) => !prevState);
+        dispatch({
+          type: "SET_LOGGINGIN",
+          loggingIn: (...prevState) => !prevState
+        });
     };
     
     const submitHandler = (event) => {
@@ -25,9 +27,12 @@ const AuthForm = (props) => {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
         const APIKEY = process.env.REACT_APP_GoogleApiKey;
-        setIsLoading(true);
+        dispatch({
+          type: "SET_LOADING",
+          loading: "true",
+        });
         let url;
-        if (isLogin) {
+        if (loggingIn) {
           url = 
             `'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${APIKEY}'`;
         } else {
@@ -46,7 +51,10 @@ const AuthForm = (props) => {
               }
             }
           ).then((res) => {
-            setIsLoading(false);
+            dispatch({
+              type: "SET_LOADING",
+              loading: "false",
+            });
             if (res.ok) {
               return res.json();
               //..
@@ -68,7 +76,7 @@ const AuthForm = (props) => {
       };
 
     const buttonHandler = () => {
-        return <button className={classes.button} ><span>{isLogin ? 'Login' : 'Create Account'}</span></button>;
+        return <button className={classes.button} ><span>{loggingIn ? 'Login' : 'Create Account'}</span></button>;
     };
     return (
       <div className={classes.form}>
@@ -92,14 +100,14 @@ const AuthForm = (props) => {
             ref={passwordInputRef}/>
           <div align="center">
             <div className={classes.actions}>
-              {!isLoading && buttonHandler()}
-              {isLoading && <p>Sending request...</p>}
+              {!loading && buttonHandler()}
+              {loading && <p>Sending request...</p>}
               <button
                 type='button'
                 className={classes.toggle}
                 onClick={switchAuthModeHandler}
               >
-                {isLogin ? 'Create new account' : 'Login with existing account'}
+                {loggingIn ? 'Create new account' : 'Login with existing account'}
               </button>
             </div>
           </div>
