@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
 import { ThemeProvider, createTheme } from "@mui/material"
-
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
       main: "rgb(51, 51, 51, 0.5)"
-    }
+    },
+
   }
 });
 ReactDOM.render(

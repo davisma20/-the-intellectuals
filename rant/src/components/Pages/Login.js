@@ -3,7 +3,7 @@ import AuthForm from '../Auth/AuthForm';
 import classes from './Login.module.css';
 import { useStateValue } from "../../StateProvider";
 import Video from '../Pages/Video';
-import SideBar from '../UI/SideBar';
+import MUISideBar from '../UI/MUISideBar';
 
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <div className={classes.wrapper}>
       {!loggedIn && <AuthForm />}
-      {loggedIn && <SideBar />}
+      {loggedIn && <MUISideBar />}
       {loggedIn && <Video />}
     </div>
   );
