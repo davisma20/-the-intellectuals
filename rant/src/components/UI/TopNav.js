@@ -1,6 +1,6 @@
 import React from 'react';
 import Message from "../../components/Pages/Message";
-import Video from "../../components/Videos/Video";
+import Video from "../../components/Pages/Video";
 import Register from "../../components/Pages/Register";
 import Login from "../../components/Pages/Login";
 import Home from "../../components/Pages/Home";
@@ -18,7 +18,6 @@ const TopNav = (props) => {
             <Link className="navbar-brand" to='/Message'>Messages</Link>
             <Link className="navbar-brand" to= '/Register'>Register</Link>
             <Link className="navbar-brand" to= '/'>LogOut</Link>
-
           </nav>
           <Switch>
             <Route path='/Home' exact={true} component={Home} />

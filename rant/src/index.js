@@ -5,10 +5,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
+import { ThemeProvider, createTheme } from "@mui/material"
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "rgb(51, 51, 51, 0.5)"
+    }
+  }
+});
 ReactDOM.render(
     <StateProvider initialState={initialState} reducer={reducer}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </StateProvider>, 
     document.getElementById('root')
     );

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from '../library/axios'
 import classes from './VidoBanner.module.css'
 import requests from '../library/requests';
+import { Button } from "@mui/material"
+
 
 
 const VideoBanner = () => {
@@ -37,6 +39,7 @@ const VideoBanner = () => {
                 <div className={classes.banner__button__container}>
                     <button className={classes.banner__button}>Play</button>
                     <button className={classes.banner__button}>My List</button>
+                    <Button color="primary" variant="contained"> Capture Data</Button>
                 </div>
                 <h1 className={classes.banner__description}>{truncate(movie?.overview, 250)}</h1>
             </div>

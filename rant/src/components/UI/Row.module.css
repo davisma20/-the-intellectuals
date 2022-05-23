@@ -1,13 +1,14 @@
 .row {
   color: #fff;
-  margin-left: 20px;
+  margin-left: 1em;
+  margin-right: 2em;
   text-align: center;
 }
 .row_posters {
     display: flex;  
     overflow-y: hidden;
     overflow-x: scroll;
-    padding: 20px;
+    padding: 1em;
     
 }
 .row_posters::-webkit-scrollbar {
@@ -19,7 +20,7 @@
     object-fit: contain;
     width: 100%;
     max-height: 100px;
-    margin-right: 10px;
+    margin-right: 0.5em;
     transition: transform 450ms;
 }
 

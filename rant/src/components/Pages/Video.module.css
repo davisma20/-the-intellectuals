@@ -9,7 +9,12 @@
     justify-content: center;
     align-items: center;  
     object-fit: contain;
+    overflow-y: auto;
 }
+::-webkit-scrollbar {
+    display: none;
+
+} 
 .Video_wrapper > div {
     margin-top: 20px;
 

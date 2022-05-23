@@ -6,16 +6,19 @@ import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 // import { getTokenFromResponse } from "./spotify";
 import { useStateValue } from "../../StateProvider";
+import scream from "../image/scream.jpg";
 
 function Sidebar() {
-  const [{ playlists }, dispatch] = useStateValue();
+  const [{ playlists }] = useStateValue();
   console.log(playlists);
+        // src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
 
   return (
     <div className={classes.sidebar}>
       <img
         className={classes.sidebar__logo}
-        src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
+        src={scream}
+
         alt=""
       />
       <SidebarOption Icon={HomeIcon} option="Home" />
@@ -25,8 +28,11 @@ function Sidebar() {
       <strong className={classes.sidebar__title}>PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => (
-        <SidebarOption option={playlist.name} />
+      <SidebarOption option={playlist.name} />
       ))}
+      <br />
+      <strong className={classes.sidebar__title}>RECENT</strong>
+      <hr />
     </div>
   );
 }

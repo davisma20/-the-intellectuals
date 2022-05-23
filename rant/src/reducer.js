@@ -11,7 +11,6 @@ export const initialState = {
   videos: [],
   loggingIn: true,
   loggedIn: true,
-
 };
 
 const reducer = (state, action) => {

@@ -1,8 +1,8 @@
-import React, {useState, useRef} from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import '../../task.min.css'
 const Register = () => {
-  const [state] = useState({ tasks: [] });
+  // const [state] = useState({ tasks: [] });
   const userName = useRef();
   const password = useRef();
 
@@ -20,9 +20,9 @@ const Register = () => {
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ tasks: response.data }));
   };
-  const componentDidMount = () => {
-    getData();
-  }
+  // const componentDidMount = () => {
+  //   getData();
+  // }
 
 
 
