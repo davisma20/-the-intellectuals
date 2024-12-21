@@ -7,29 +7,13 @@ const Register = () => {
   const password = useRef();
 
   const getData = () => {
-
-    //UNCOMMENT the appropriate url for the backend framework
-
-    // Java Spring Boot uses port 8080
-    let url = "http://localhost:8080/user/fetch";
-
-    // C# dotnetcore uses port 5000
-    //let url = "http://localhost:5000/projects";
-
-    // Express uses port 3001 (react uses 3000)
-    //let url = "http://localhost:3001/tasks";
+    let url = process.env.REACT_APP_BACKEND_URL + '/fetch';
     axios.get(url).then(response => this.setState({ tasks: response.data }));
   };
-  // const componentDidMount = () => {
-  //   getData();
-  // }
-
-
 
   const addUser = () => {
     //uncomment and update url to appropriate url for backend connection
-    //let url = "http://localhost:3001/tasks";
-    let url = "http://localhost:8080/user/signup";
+    let url = process.env.REACT_APP_BACKEND_URL + '/signup';
     axios.post(url, { 
                         id: 456, ///WTF
                         username: userName.current.value,

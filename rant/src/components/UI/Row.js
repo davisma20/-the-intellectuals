@@ -5,8 +5,7 @@ import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
 
 
-const base_url = "https://image.tmdb.org/t/p/original/";
-
+const base_url = process.env.REACT_APP_TMDB_API_URL;
 const Row = ({ title, fetchUrl, isLargeRow }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -62,3 +61,4 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     };
 
 export default Row
+

@@ -4,16 +4,12 @@ import { useStateValue } from "../../StateProvider";
 
 const AuthForm = (props) => {
     const [{loading, loggingIn}, dispatch] = useStateValue();
-
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    
+    const [password, setPassword] = useState(''); 
     const [error] = useState('');
-    
     const emailInputRef = useRef();
-    
     const passwordInputRef = useRef();
-    
+
     const switchAuthModeHandler = () => {
         dispatch({
           type: "SET_LOGGINGIN",
@@ -23,7 +19,6 @@ const AuthForm = (props) => {
     
     const submitHandler = (event) => {
         event.preventDefault();
-        
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
         const APIKEY = process.env.REACT_APP_GoogleApiKey;
@@ -33,11 +28,9 @@ const AuthForm = (props) => {
         });
         let url;
         if (loggingIn) {
-          url = 
-            `'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${APIKEY}'`;
+          url = process.env.REACT_APP_IDENTITY_KEY_URL + APIKEY;
         } else {
-          url = 
-            `'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${APIKEY}'`;
+          url = process.env.REACT_APP_IDENTITY_SIGNUP_KEY_URL + APIKEY;
           fetch(
             url, {
               method: 'POST',

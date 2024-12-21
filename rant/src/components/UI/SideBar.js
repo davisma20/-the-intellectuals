@@ -18,7 +18,6 @@ function Sidebar() {
       <img
         className={classes.sidebar__logo}
         src={scream}
-
         alt=""
       />
       <SidebarOption Icon={HomeIcon} option="Home" />
